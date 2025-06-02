@@ -74,3 +74,13 @@ body {
 .margin-left {
   margin-left: 37em;
 }
+
+.text-degradation {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.email {
+  color: #ff7e5f;
+}

@@ -1,58 +1,161 @@
----
+--- 
 import "../styles/global.css";
----
+--- 
 <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 
-
 <img class="block mt-10 mx-auto" src="/src/assets/logo-full.svg" alt="Logo"/>
-
 
 <img class="position_pattern_circle" src="/src/assets/pattern-circle.svg" alt="Squiggly Line"/>
 <img class="position_pattern_lines" src="/src/assets/pattern-lines.svg" alt="Squiggly Line"/>
 <img class="position_pattern_line_top" src="/src/assets/pattern-squiggly-line-top.svg" alt="Squiggly Line"/>
 <img class="position_pattern_line_bottom" src="/src/assets/pattern-squiggly-line-bottom-desktop.svg" alt="Squiggly Line"/>
 
-<div class="flex items-center justify-center text-center mt-8">
-  <p class="inconsolata-bold text-white text-5xl">
-    Your Journey To Coding Conf<br>2025 Start Here!
-  </p>
-</div>
+<form id="ticketForm" enctype="multipart/form-data">  
+  <div class="flex items-center justify-center text-center mt-8">
+    <p class="inconsolata-bold text-white text-5xl">
+      Your Journey To Coding Conf<br>2025 Start Here!
+    </p>
+  </div>
 
-<div class="flex items-center justify-center text-center mt-2">
-  <p class="inconsolata text-gray-300">Secure your spot at next year's biggest coding conference.</p>
-</div>
+  <div class="flex items-center justify-center text-center mt-2">
+    <p class="inconsolata text-gray-300">
+      Secure your spot at next year's biggest coding conference.
+    </p>
+  </div>
 
-<div class="mt-6 margin-left">
-  <p class="inconsolata text-gray-100">Upload avatar</p>
-</div>
 
-<div class="flex items-center justify-center mt-2">
-  <label for="avatarUpload" class="cursor-pointer">
-    <input type="file" id="avatarUpload" class="hidden" />
-    <div class="bg-[#7c7c7c2a] rounded-2xl border-2 border-dashed border-gray-400 w-96 h-28 flex flex-col items-center justify-center space-y-2 p-4 hover:bg-[#88888840] hover:border-gray-300 transition-colors duration-200">
-      <div class="bg-[#3a3a3ab4] rounded-xl border border-gray-600 w-12 h-12 flex items-center justify-center"> 
-        <img class="w-10 h-10" src="/src/assets/icon-upload.svg" alt="Upload Icon"/> 
+  <div class="mt-6 margin-left">
+    <p class="inconsolata text-gray-100">Upload avatar</p>
+  </div>
+
+  <div class="flex items-center justify-center mt-2">
+    <label for="avatarUpload" class="cursor-pointer">
+      <input 
+        type="file" 
+        id="avatarUpload" 
+        name="avatar" 
+        accept="image/*" 
+        class="hidden" 
+      />
+      <div 
+        class="bg-[#7c7c7c2a] rounded-2xl border-2 border-dashed border-gray-400 w-96 h-28 flex flex-col items-center justify-center space-y-2 p-4 hover:bg-[#88888840] hover:border-gray-300 transition-colors duration-200"
+      >
+        <div 
+          class="bg-[#3a3a3ab4] rounded-xl border border-gray-600 w-12 h-12 flex items-center justify-center"
+        > 
+          <img class="w-10 h-10" src="/src/assets/icon-upload.svg" alt="Upload Icon"/> 
+        </div>
+        <p class="inconsolata text-gray-300 text-sm">Drag and drop or click to upload</p> 
       </div>
-      <p class="inconsolata text-gray-300 text-sm">Drag and drop or click to upload</p> 
-    </div>
-  </label>
-</div>
+    </label>
+  </div>
+  <div class="mt-6 margin-left">
+    <p class="inconsolata text-gray-100">Full Name</p>
+    <input 
+      type="text" 
+      name="fullName" 
+      class="inconsolata text-gray-100 bg-[#3a3a3a63] rounded-xl border border-gray-600 w-92 h-12 mt-2 px-4 focus:outline-none focus:border-white hover:border-gray-400 transition-colors duration-200" 
+      placeholder="Enter your full name" 
+      required 
+    /> 
+  </div>
 
-<div class="mt-6 margin-left">
-  <p class="inconsolata text-gray-100">Full Name</p>
-  <input type="text" class="inconsolata text-gray-100 bg-[#3a3a3a63] rounded-xl border border-gray-600 w-92 h-12 mt-2 px-4 focus:outline-none focus:border-white hover:border-gray-400 transition-colors duration-200" placeholder="Enter your full name" /> {/* Changed focus state */}
-</div>
+  <div class="mt-6 margin-left">
+    <p class="inconsolata text-gray-100">Email Address</p>
+    <input 
+      type="email" 
+      name="email" 
+      class="inconsolata text-gray-100 bg-[#3a3a3a63] rounded-xl border border-gray-600 w-92 h-12 mt-2 px-4 focus:outline-none focus:border-white hover:border-gray-400 transition-colors duration-200" 
+      placeholder="Enter your email address" 
+      required 
+    /> 
+  </div>
 
-<div class="mt-6 margin-left">
-  <p class="inconsolata text-gray-100">Email Address</p>
-  <input type="email" class="inconsolata text-gray-100 bg-[#3a3a3a63] rounded-xl border border-gray-600 w-92 h-12 mt-2 px-4 focus:outline-none focus:border-white hover:border-gray-400 transition-colors duration-200" placeholder="Enter your email address" /> {/* Changed focus state */}
-</div>
+  <div class="mt-6 margin-left z-50 relative">
+    <p class="inconsolata text-gray-100">GitHub Username</p>
+    <input 
+      type="text" 
+      name="githubUsername" 
+      class="inconsolata text-gray-100 bg-[#3a3a3a63] rounded-xl border border-gray-600 w-92 h-12 mt-2 px-4 focus:outline-none focus:border-white hover:border-gray-400 transition-colors duration-200" 
+      placeholder="Enter your GitHub username" 
+      required 
+    /> 
+  </div>
 
-<div class="mt-6 margin-left z-50 relative">
-  <p class="inconsolata text-gray-100">GitHub Username</p>
-  <input type="text" class="inconsolata text-gray-100 bg-[#3a3a3a63] rounded-xl border border-gray-600 w-92 h-12 mt-2 px-4 focus:outline-none focus:border-white hover:border-gray-400 transition-colors duration-200" placeholder="Enter your GitHub username" /> {/* Changed focus state */}
-</div>
 
-<button class="block mx-auto mt-10 mb-10 bg-[#f67464] rounded-lg w-92 h-12 flex items-center justify-center hover:bg-red-400 transition-colors duration-200">
-  <p class="inconsolata-bold text-blue-950">Generate Ticket</p>
-</button>
+  <button 
+    type="submit" 
+    class="mx-auto mt-10 mb-10 bg-[#f67464] rounded-lg w-92 h-12 flex items-center justify-center hover:bg-red-400 transition-colors duration-200"
+  >
+    <p class="inconsolata-bold text-blue-950">Generate Ticket</p>
+  </button>
+</form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("ticketForm");
+    if (!form) {
+      console.error("Formulario no encontrado");
+      return;
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const fullNameInput = form.elements.namedItem("fullName");
+      const emailInput = form.elements.namedItem("email");
+      const githubInput = form.elements.namedItem("githubUsername");
+      const avatarInput = form.elements.namedItem("avatar");
+
+      if (!fullNameInput || !emailInput || !githubInput) {
+        console.error("Uno o más campos no fueron encontrados.");
+        return;
+      }
+
+      const fullName = fullNameInput.value.trim();
+      const email = emailInput.value.trim();
+      const githubUsername = githubInput.value.trim();
+
+      const saveAndRedirect = (avatarData = "") => {
+        const ticketData = { fullName, email, githubUsername, avatarUrl: avatarData };
+        localStorage.setItem("ticketData", JSON.stringify(ticketData));
+
+        // Send data to the email API endpoint
+        fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(ticketData),
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log("Email API response:", data);
+          // Redirect after attempting to send email
+          window.location.href = "/ticket";
+        })
+        .catch(error => {
+          console.error("Error sending email data:", error);
+          // Still redirect even if email sending fails
+          window.location.href = "/ticket";
+        });
+      };
+
+      if (avatarInput && avatarInput.files && avatarInput.files[0]) {
+        const file = avatarInput.files[0];
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          saveAndRedirect(event.target.result);
+        };
+
+        reader.onerror = () => {
+          console.error("Error leyendo el archivo");
+          saveAndRedirect();
+        };
+        reader.readAsDataURL(file);
+      } else {
+        saveAndRedirect();
+      }
+    });
+  });
+</script>

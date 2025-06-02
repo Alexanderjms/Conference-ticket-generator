@@ -1,0 +1,141 @@
+---
+import "../styles/global.css";
+
+---
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+
+<img class="block mt-10 mx-auto" src="/src/assets/logo-full.svg" alt="Logo"/>
+
+<img class="position_pattern_circle" src="/src/assets/pattern-circle.svg" alt="Squiggly Line"/>
+<img class="position_pattern_lines" src="/src/assets/pattern-lines.svg" alt="Squiggly Line"/>
+<img class="position_pattern_line_top" src="/src/assets/pattern-squiggly-line-top.svg" alt="Squiggly Line"/>
+<img class="position_pattern_line_bottom" src="/src/assets/pattern-squiggly-line-bottom-desktop.svg" alt="Squiggly Line"/>
+
+<form id="ticketForm" enctype="multipart/form-data">  
+  <div class="flex items-center justify-center text-center mt-8">
+    <p class="inconsolata-bold text-white text-5xl">
+      Congrats,<span class="text-degradation" id="fullName"></span>!<br>
+      Your ticket is ready.
+    </p>
+  </div>
+
+  <div class="flex items-center justify-center text-center mt-8">
+    <p class="inconsolata text-gray-300">
+      We've emailed your ticket to <br> <span class="email" id="email"></span>
+      and will send updates in <br> the run up to the event.
+    </p>
+  </div>
+
+  <div class="relative">
+    <div class="mx-auto mt-8 mb-4 relative w-[600px]">
+      <img src="/src/assets/pattern-ticket.svg" alt="Ticket Background" class="w-full"/>
+
+      <div class="absolute top-0 left-0 w-full h-full p-8">
+        <!-- Logo y fecha -->
+        <div class="flex flex-col items-start mb-8">
+          <img src="/src/assets/logo-full.svg" alt="Logo" class="block" />
+          <p id="currentDate" class="text-white inconsolata mt-2 ml-12"></p>
+        </div>
+
+        <!-- Contenedor avatar, datos y código vertical -->
+        <div class="flex justify-between absolute bottom-8 left-8 right-8 items-end">
+          <!-- Avatar + Datos a la izquierda -->
+          <div class="flex items-end gap-4">
+            <div id="ticketAvatarContainer"></div>
+            <div>
+              <p class="text-2xl text-white inconsolata-bold mb-1" id="fullName"></p>
+              <div class="flex items-center gap-2">
+                <img src="/src/assets/icon-github.svg" alt="GitHub" class="w-4 h-4" />
+                <span id="ticketGithubUsername" class="text-white inconsolata"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Código vertical a la derecha -->
+          <div class="vertical-code text-gray-300 inconsolata text-xl font-bold select-none flex flex-col gap-0" style="align-self: center;">
+            <span class="rotated-char">#</span>
+            <span class="rotated-char">0</span>
+            <span class="rotated-char">1</span>
+            <span class="rotated-char">6</span>
+            <span class="rotated-char">0</span>
+            <span class="rotated-char">9</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<style>
+  #ticketAvatarContainer {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  }
+
+  .vertical-code {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .rotated-char {
+    display: inline-block;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    margin-bottom: 4px;
+    gap: -10px
+  }
+</style>
+
+<script>
+  const dateElement = document.getElementById("currentDate");
+  const now = new Date();
+
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  };
+
+  const formattedDate = now.toLocaleDateString("en-US", options); // Ej: "June 1, 2025"
+  const location = "Austin, TX";
+
+  if (dateElement) {
+    dateElement.textContent = `${formattedDate} / ${location}`;
+  }
+
+  const ticketData = localStorage.getItem("ticketData");
+
+  if (ticketData) {
+    const { fullName, email, githubUsername, avatarUrl } = JSON.parse(ticketData);
+
+    // Nombre
+    const fullNameSpans = document.querySelectorAll("#fullName");
+    fullNameSpans.forEach(el => el.textContent = fullName || "");
+
+    // Email
+    const emailSpan = document.getElementById("email");
+    if (emailSpan) emailSpan.textContent = email || "";
+
+    // GitHub Username
+    const githubSpan = document.getElementById("ticketGithubUsername");
+    if (githubSpan) githubSpan.textContent = githubUsername || "";
+
+    // Avatar
+    if (avatarUrl) {
+      const avatarImg = document.createElement("img");
+      avatarImg.src = avatarUrl;
+      avatarImg.alt = "Avatar";
+      avatarImg.className = "w-full h-full object-cover";
+
+      const ticketAvatarContainer = document.getElementById("ticketAvatarContainer");
+      if (ticketAvatarContainer) ticketAvatarContainer.appendChild(avatarImg);
+    }
+  }
+
+  
+</script>
