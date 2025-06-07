@@ -9,7 +9,7 @@ html {
 
 body {
   position: relative;
-  background-image: url("/src/assets/background-desktop.png");
+  background-image: url("/assets/background-desktop.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
